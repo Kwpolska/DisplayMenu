@@ -1,0 +1,71 @@
+{
+    "dockPresets": {
+        "Bottom": {
+            "position": "bottom",
+            "tilesize": 50
+        },
+        "Right": {
+            "position": "right",
+            "tilesize": 50
+        }
+    },
+    "displayProperties": {
+        "XXX": {
+            "name": "MacBook",
+            "symbol": "💻",
+            "resolutionWhitelist":
+            [
+                "1280 800 2x",
+                "1440 900 2x"
+            ],
+            "allowedRefreshRate": 0.0
+        },
+        "YYY": {
+            "name": "External",
+            "symbol": "🖥",
+            "resolutionWhitelist":
+            [
+                "1920 1080 1x"
+            ],
+        "allowedRefreshRate": 60.0
+        }
+    },
+    "presets": {
+        "Dual Screen": {
+            "dockPreset": "Bottom",
+            "keyEquivalent": "d",
+            "allDisplaysPresent": true,
+            "displays": {
+                "MacBook": "self 1280 800 2x",
+                "External": "self 1920 1080 1x"
+            }
+        },
+        "MacBook Only": {
+            "dockPreset": "Right",
+            "keyEquivalent": "m",
+            "allDisplaysPresent": false,
+            "displays": {
+                "MacBook": "self 1280 800 2x",
+                "External": "mirror MacBook"
+            }
+        },
+        "MacBook Only (1440×900)": {
+            "dockPreset": "Right",
+            "keyEquivalent": "M",
+            "allDisplaysPresent": false,
+            "displays": {
+                "MacBook": "self 1440 900 2x",
+                "External": "mirror MacBook"
+            }
+        },
+        "External Only": {
+            "dockPreset": "Bottom",
+            "keyEquivalent": "e",
+            "allDisplaysPresent": false,
+            "displays": {
+                "MacBook": "mirror External",
+                "External": "self 1920 1080 1x"
+            }
+        }
+    }
+}
