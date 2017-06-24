@@ -39,14 +39,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var displayManager: DisplayManager? = nil
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
     let statusMenu = NSMenu()
+    let refreshItem = NSMenuItem(title: NSLocalizedString("Reload", comment: "Reload menu item"), action: #selector(acquireDisplayManager), keyEquivalent: "r")
+    let quitItem = NSMenuItem(title: NSLocalizedString("Quit", comment: "Quit menu item"), action: #selector(NSApp.terminate), keyEquivalent: "q")
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         do {
             try acquireDisplayManager()
         } catch let error {
-            alertAndQuit("Failed to initialize display manager.", String(reflecting: error))
+            alertAndQuit(NSLocalizedString("Failed to initialize display manager.", comment: "Alert title (display manager/config error)"), String(reflecting: error))
         }
 
+        refreshItem.keyEquivalentModifierMask = .control
         statusMenu.delegate = self
 
         statusItem.image = #imageLiteral(resourceName: "DMStatusReady")
@@ -61,7 +64,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if FileManager.default.fileExists(atPath: url.path) {
             displayManager = try DisplayManager(jsonPath: url)
         } else {
-            alertAndQuit("Settings file not found", "Place a settings file at \(url.path) and try again.")
+            alertAndQuit(
+                NSLocalizedString("Settings file not found", comment: "no settings alert title"),
+                String.localizedStringWithFormat(NSLocalizedString("Place a settings file at %@ and try again.", comment: "no settings alert description"), url.path)
+            )
         }
     }
 
@@ -80,7 +86,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             self.statusItem.image = #imageLiteral(resourceName: "DMStatusSuccess")
         } catch let error {
             self.statusItem.image = #imageLiteral(resourceName: "DMStatusError")
-            alert("Failed to apply preset", String(reflecting: error), alertStyle: .critical)
+            alert(NSLocalizedString("Failed to apply preset", comment: "alert when applyPreset fails"), String(reflecting: error), alertStyle: .critical)
         }
         Timer.scheduledTimer(timeInterval: TimeInterval(1.5), target: self, selector: #selector(_resetDMIcon), userInfo: nil, repeats: false)
     }
@@ -96,7 +102,8 @@ extension AppDelegate: NSMenuDelegate {
         }
 
         menu.addItem(NSMenuItem.separator())
-        menu.addItem(withTitle: "Quit", action: #selector(NSApp.terminate), keyEquivalent: "q")
+        menu.addItem(refreshItem)
+        menu.addItem(quitItem)
     }
 }
 
@@ -111,9 +118,9 @@ public func alert(_ messageText: String, _ informativeText: String? = nil, alert
 }
 
 public func alertAndQuit(_ messageText: String, _ informativeText: String? = nil) {
-    var informative = "The application will now quit."
+    var informative = NSLocalizedString("The application will now quit.", comment: "fatal error alert (without informative text)")
     if informativeText != nil {
-        informative = informativeText! + " The application will now quit."
+        informative = String.localizedStringWithFormat(NSLocalizedString("%@ The application will now quit.", comment: "fatal error alert (argument is informative text)"), informativeText!)
     }
     alert(messageText, informative, alertStyle: NSAlertStyle.critical)
     NSApp.terminate(nil)

@@ -1,0 +1,23 @@
+/* fatal error alert (argument is informative text) */
+"%@ The application will now quit." = "%@ The application will now quit.";
+
+/* alert when applyPreset fails */
+"Failed to apply preset" = "Failed to apply preset";
+
+/* no settings alert description */
+"Place a settings file at %@ and try again." = "Place a settings file at %@ and try again.";
+
+/* Quit menu item */
+"Quit" = "Quit";
+
+/* Reload menu item */
+"Reload" = "Reload";
+
+/* no settings alert title */
+"Settings file not found" = "Settings file not found";
+
+/* fatal error alert (no other info) */
+"The application will now quit." = "The application will now quit.";
+
+/* Alert title (display manager/config error) */
+"Failed to initialize display manager." = "Nie udało się zainicjalizować menadżera ekranów.";

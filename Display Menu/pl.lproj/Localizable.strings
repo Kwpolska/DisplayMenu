@@ -1,0 +1,23 @@
+/* fatal error alert (argument is informative text) */
+"%@ The application will now quit." = "%@ Program zostanie teraz zamknięty.";
+
+/* alert when applyPreset fails */
+"Failed to apply preset" = "Nie udało się ustawić układu";
+
+/* no settings alert description */
+"Place a settings file at %@ and try again." = "Utwórz plik z ustawieniami %@ i spróbuj ponownie.";
+
+/* Quit menu item */
+"Quit" = "Zakończ";
+
+/* Reload menu item */
+"Reload" = "Odśwież";
+
+/* no settings alert title */
+"Settings file not found" = "Nie znaleziono pliku z ustawieniami";
+
+/* fatal error alert (no other info) */
+"The application will now quit." = "Program zostanie teraz zamknięty.";
+
+/* Alert title (display manager/config error) */
+"Failed to initialize display manager." = "Failed to initialize display manager.";

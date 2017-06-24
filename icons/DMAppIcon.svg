@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   height="32"
+   viewBox="0 0 32 32"
+   width="32"
+   id="svg4227"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="DMAppIcon.svg"
+   style="fill:#000000"
+   inkscape:export-filename="/Users/kwpolska/Dropbox/Projects/COMPLETED/DisplayMenu-icons/png-appicon/DM512_2x.png"
+   inkscape:export-xdpi="2880"
+   inkscape:export-ydpi="2880">
+  <metadata
+     id="metadata4237">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs4235">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient4140">
+      <stop
+         style="stop-color:#66ccff;stop-opacity:1;"
+         offset="0"
+         id="stop4142" />
+      <stop
+         style="stop-color:#0080ff;stop-opacity:1"
+         offset="1"
+         id="stop4144" />
+    </linearGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient4140"
+       id="linearGradient4146"
+       x1="13.218266"
+       y1="9.2604418"
+       x2="19.223179"
+       y2="14.189872"
+       gradientUnits="userSpaceOnUse" />
+  </defs>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1280"
+     inkscape:window-height="690"
+     id="namedview4233"
+     showgrid="false"
+     inkscape:zoom="13.591834"
+     inkscape:cx="2.5268886"
+     inkscape:cy="15.768027"
+     inkscape:window-x="0"
+     inkscape:window-y="280"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg4227" />
+  <rect
+     style="opacity:0.98999999;fill:url(#linearGradient4146);fill-opacity:1;stroke:none;stroke-width:3;stroke-opacity:1"
+     id="rect4279"
+     width="24.545456"
+     height="13.636364"
+     x="3.7272737"
+     y="5.090909" />
+  <ellipse
+     style="opacity:0.98999999;fill:#ffffff;fill-opacity:0.49803922;stroke:#0080ff;stroke-width:0.2413227;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     id="path4148"
+     cx="18.093317"
+     cy="6.3624563"
+     rx="6.1270771"
+     ry="10.505481"
+     transform="matrix(0.91831334,0.39585427,-0.44326972,0.89638828,0,0)" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-weight:normal;font-size:54.54544449px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     x="3.6225226"
+     y="17.38579"
+     id="text4133"
+     sodipodi:linespacing="125%"><tspan
+       sodipodi:role="line"
+       id="tspan4135"
+       x="3.6225226"
+       y="17.38579"
+       style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:15.34091091px;font-family:'Helvetica Neue';-inkscape-font-specification:'Helvetica Neue Medium'">DM</tspan></text>
+  <path
+     d="m 28.272728,2.3636362 -24.5454552,0 C 2.2272728,2.3636362 1,3.590909 1,5.090909 l 0,16.363638 c 0,1.5 1.2272728,2.727272 2.7272728,2.727272 l 9.5454552,0 -2.727273,4.090906 0,1.363639 10.90909,0 0,-1.363639 -2.727273,-4.090906 9.545456,0 c 1.5,0 2.727272,-1.227272 2.727272,-2.727272 L 31,5.090909 c 0,-1.5 -1.227272,-2.7272728 -2.727272,-2.7272728 z m 0,16.3636388 -24.5454552,0 0,-13.636366 24.5454552,0 0,13.636366 z"
+     id="path4231"
+     inkscape:connector-curvature="0"
+     style="fill:#000000;fill-opacity:1" />
+</svg>

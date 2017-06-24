@@ -1,0 +1,4 @@
+"DMStatusReady" = "Display Menu";
+"DMStatusWorking" = "Display Menu (working)";
+"DMStatusSuccess" = "Display Menu (success)";
+"DMStatusError" = "Display Menu (error)";

@@ -1,0 +1,4 @@
+"DMStatusReady" = "Menu Ekranów";
+"DMStatusWorking" = "Menu Ekranów (praca w toku)";
+"DMStatusSuccess" = "Menu Ekranów (OK)";
+"DMStatusError" = "Menu Ekranów (błąd)";
