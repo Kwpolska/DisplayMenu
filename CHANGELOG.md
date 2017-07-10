@@ -3,6 +3,11 @@ Changelog
 
 More information, including binaries, can be found on GitHub in the [releases section](https://github.com/Kwpolska/DisplayMenu/releases).
 
+v1.2 (build 3)
+--------------
+
+Fix crashes if a display is not present.
+
 v1.1 (build 2)
 --------------
 

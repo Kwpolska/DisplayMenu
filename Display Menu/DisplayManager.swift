@@ -518,7 +518,7 @@ class DisplayManager {
 
         for (identifierString, setup) in preset.displays {
             let display = findDisplay(identifierString: identifierString)
-            if setup.mirroring { continue }
+            if setup.mirroring || display == nil { continue }
             display?.fetchModes()
             do {
                 try display!.setResolution(config: &config, resolution: setup.resolution!)
@@ -534,7 +534,7 @@ class DisplayManager {
         config = try beginConfig()
         for (identifierString, setup) in preset.displays {
             let display = findDisplay(identifierString: identifierString)
-            if !setup.mirroring { continue }
+            if !setup.mirroring || display == nil { continue }
             let otherDisplay = findDisplay(identifierString: setup.mirrorOfDisplay!)
             do {
                 try display!.setMirroring(config: &config, otherDisplay: otherDisplay)
