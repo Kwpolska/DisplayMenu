@@ -41,6 +41,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusMenu = NSMenu()
     let refreshItem = NSMenuItem(title: NSLocalizedString("Reload", comment: "Reload menu item"), action: #selector(acquireDisplayManager), keyEquivalent: "r")
     let quitItem = NSMenuItem(title: NSLocalizedString("Quit", comment: "Quit menu item"), action: #selector(NSApp.terminate), keyEquivalent: "q")
+    let dockPresetsItem = NSMenuItem(title: NSLocalizedString("Dock Presets", comment: "Dock Presets menu item"), action: nil, keyEquivalent: "")
+
+    override init() {
+        super.init()
+
+        refreshItem.keyEquivalentModifierMask = .control
+        statusMenu.delegate = self
+
+        statusItem.image = #imageLiteral(resourceName: "DMStatusReady")
+        statusItem.menu = statusMenu
+    }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         do {
@@ -49,11 +60,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alertAndQuit(NSLocalizedString("Failed to initialize display manager.", comment: "Alert title (display manager/config error)"), String(reflecting: error))
         }
 
-        refreshItem.keyEquivalentModifierMask = .control
-        statusMenu.delegate = self
-
-        statusItem.image = #imageLiteral(resourceName: "DMStatusReady")
-        statusItem.menu = statusMenu
     }
 
     func acquireDisplayManager() throws {
@@ -90,6 +96,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         Timer.scheduledTimer(timeInterval: TimeInterval(1.5), target: self, selector: #selector(_resetDMIcon), userInfo: nil, repeats: false)
     }
+
+    func applyDockPresetFromMenu(_ sender: NSMenuItem?) {
+        let dp = sender!.representedObject as! DockPreset
+        dp.apply(force: true)
+    }
 }
 
 extension AppDelegate: NSMenuDelegate {
@@ -101,7 +112,16 @@ extension AppDelegate: NSMenuDelegate {
             menu.addItem(item)
         }
 
+        let dpsubmenu = NSMenu()
+        for (name, dp) in displayManager!.dockPresets {
+            let item = NSMenuItem(title: name, action: #selector(applyDockPresetFromMenu), keyEquivalent: "")
+            item.representedObject = dp
+            dpsubmenu.addItem(item)
+        }
+
         menu.addItem(NSMenuItem.separator())
+        menu.addItem(dockPresetsItem)
+        dockPresetsItem.submenu = dpsubmenu
         menu.addItem(refreshItem)
         menu.addItem(quitItem)
     }

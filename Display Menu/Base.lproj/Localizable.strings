@@ -7,6 +7,9 @@
 /* no settings alert description */
 "Place a settings file at %@ and try again." = "Place a settings file at %@ and try again.";
 
+/* Dock presets menu item */
+"Dock Presets" = "Dock Presets";
+
 /* Quit menu item */
 "Quit" = "Quit";
 

@@ -75,13 +75,15 @@ class DockPreset: CustomStringConvertible {
     }
 
     /// Apply a dock preset.
-    func apply() {
+    func apply(force: Bool = false) {
         let defaults = UserDefaults(suiteName: "com.apple.dock")
-        let tilesize_current = defaults?.integer(forKey: "tilesize")
-        let position_current = defaults?.string(forKey: "orientation")
+        if !force {
+            let tilesize_current = defaults?.integer(forKey: "tilesize")
+            let position_current = defaults?.string(forKey: "orientation")
 
-        if tilesize == tilesize_current && position.rawValue == position_current {
-            return // Don’t change the settings if it’s what we want already
+            if tilesize == tilesize_current && position.rawValue == position_current {
+                return // Don’t change the settings if it’s what we want already
+            }
         }
 
         defaults?.set(tilesize, forKey: "tilesize")

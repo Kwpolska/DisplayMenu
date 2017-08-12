@@ -3,6 +3,11 @@ Changelog
 
 More information, including binaries, can be found on GitHub in the [releases section](https://github.com/Kwpolska/DisplayMenu/releases).
 
+v1.3 (build 4)
+--------------
+
+Add *Dock Presets* submenu.
+
 v1.2 (build 3)
 --------------
 
