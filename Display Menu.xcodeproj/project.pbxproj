@@ -25,6 +25,7 @@
 		E53D1BC51EFE5EA100C6F0A1 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E53D1BC71EFE608B00C6F0A1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/AccessibilityImageDescriptions.strings; sourceTree = "<group>"; };
 		E53D1BC91EFE609300C6F0A1 /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/AccessibilityImageDescriptions.strings; sourceTree = "<group>"; };
+		E5918CAB1F3F016700D7D9A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = "Display Menu/en.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E5E515451EF943CD00D8CF93 /* Display Menu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Display Menu.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5E515481EF943CD00D8CF93 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5E5154A1EF943CD00D8CF93 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -166,6 +167,7 @@
 			children = (
 				E53D1BB91EFE5ABF00C6F0A1 /* Base */,
 				E53D1BBB1EFE5B5600C6F0A1 /* pl */,
+				E5918CAB1F3F016700D7D9A4 /* en */,
 			);
 			name = InfoPlist.strings;
 			path = ..;
