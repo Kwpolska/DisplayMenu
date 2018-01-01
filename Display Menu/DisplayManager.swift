@@ -1,6 +1,6 @@
 /*
  * Display Menu
- * Copyright © 2017, Chris Warrick.
+ * Copyright © 2017-2018, Chris Warrick.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -88,7 +88,7 @@ class DockPreset: CustomStringConvertible {
 
         defaults?.set(tilesize, forKey: "tilesize")
         defaults?.set(position.rawValue, forKey: "orientation")
-        let apps = NSWorkspace.shared().runningApplications
+        let apps = NSWorkspace.shared.runningApplications
         for app in apps {
             if app.bundleIdentifier == "com.apple.dock" {
                 app.terminate()
@@ -140,7 +140,7 @@ class Resolution: Hashable, Equatable, CustomStringConvertible {
 
     /// Initialize a screen resolution, based on a resolution string (`"(width) (height) (scale)x"`), that has already been split into parts.
     convenience init(resolutionParts: [String]) {
-        let scale = String(resolutionParts[2].characters.first!)
+        let scale = String(resolutionParts[2].first!)
         self.init(width: Int(resolutionParts[0])!, height: Int(resolutionParts[1])!, scale: Int(scale)!)
     }
 

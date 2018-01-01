@@ -1,6 +1,6 @@
 /*
  * Display Menu
- * Copyright © 2017, Chris Warrick.
+ * Copyright © 2017-2018, Chris Warrick.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -37,7 +37,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var displayManager: DisplayManager? = nil
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let statusMenu = NSMenu()
     let refreshItem = NSMenuItem(title: NSLocalizedString("Reload", comment: "Reload menu item"), action: #selector(acquireDisplayManager), keyEquivalent: "r")
     let quitItem = NSMenuItem(title: NSLocalizedString("Quit", comment: "Quit menu item"), action: #selector(NSApp.terminate), keyEquivalent: "q")
@@ -46,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override init() {
         super.init()
 
-        refreshItem.keyEquivalentModifierMask = .control
+        refreshItem.keyEquivalentModifierMask = NSEvent.ModifierFlags.control
         statusMenu.delegate = self
 
         statusItem.image = #imageLiteral(resourceName: "DMStatusReady")
@@ -62,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     }
 
-    func acquireDisplayManager() throws {
+    @objc func acquireDisplayManager() throws {
         let appsupport = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let appdir = appsupport.appendingPathComponent(Bundle.main.bundleIdentifier!, isDirectory: true)
         try FileManager.default.createDirectory(at: appdir, withIntermediateDirectories: true, attributes: nil)
@@ -81,11 +81,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to tear down your application
     }
 
-    func _resetDMIcon() {
+    @objc func _resetDMIcon() {
         self.statusItem.image = #imageLiteral(resourceName: "DMStatusReady")
     }
 
-    func applyPresetFromMenu(_ sender: NSMenuItem?) {
+    @objc func applyPresetFromMenu(_ sender: NSMenuItem?) {
         self.statusItem.image = #imageLiteral(resourceName: "DMStatusWorking")
         do {
             try displayManager!.applyPreset(sender!.representedObject as! DisplayPreset)
@@ -97,7 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Timer.scheduledTimer(timeInterval: TimeInterval(1.5), target: self, selector: #selector(_resetDMIcon), userInfo: nil, repeats: false)
     }
 
-    func applyDockPresetFromMenu(_ sender: NSMenuItem?) {
+    @objc func applyDockPresetFromMenu(_ sender: NSMenuItem?) {
         let dp = sender!.representedObject as! DockPreset
         dp.apply(force: true)
     }
@@ -127,7 +127,7 @@ extension AppDelegate: NSMenuDelegate {
     }
 }
 
-public func alert(_ messageText: String, _ informativeText: String? = nil, alertStyle: NSAlertStyle = NSAlertStyle.informational) {
+public func alert(_ messageText: String, _ informativeText: String? = nil, alertStyle: NSAlert.Style = NSAlert.Style.informational) {
     let alert = NSAlert()
     alert.messageText = messageText
     if informativeText != nil {
@@ -142,6 +142,6 @@ public func alertAndQuit(_ messageText: String, _ informativeText: String? = nil
     if informativeText != nil {
         informative = String.localizedStringWithFormat(NSLocalizedString("%@ The application will now quit.", comment: "fatal error alert (argument is informative text)"), informativeText!)
     }
-    alert(messageText, informative, alertStyle: NSAlertStyle.critical)
+    alert(messageText, informative, alertStyle: NSAlert.Style.critical)
     NSApp.terminate(nil)
 }

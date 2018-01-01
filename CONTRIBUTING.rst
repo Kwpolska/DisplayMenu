@@ -2,7 +2,7 @@
 Contribution rules
 ==================
 :Info: Those are the contribution rules for DisplayMenu.
-:Copyright: © 2012-2017, Chris Warrick.
+:Copyright: © 2012-2018, Chris Warrick.
 :License: 3-clause BSD
 
 .. index:: contributing

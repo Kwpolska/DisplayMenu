@@ -31,5 +31,5 @@ Credits
 
 Icons: `desktop-mac` and `check` from Material Icons by Google (Apache License v2.0)
 
-Copyright © 2017, Chris Warrick. All rights reserved.
+Copyright © 2017-2018, Chris Warrick. All rights reserved.
 Licensed under the 3-clause BSD license.

@@ -3,6 +3,11 @@ Changelog
 
 More information, including binaries, can be found on GitHub in the [releases section](https://github.com/Kwpolska/DisplayMenu/releases).
 
+v1.4 (build 5)
+--------------
+
+Update codebase to Swift 4.
+
 v1.3 (build 4)
 --------------
 
