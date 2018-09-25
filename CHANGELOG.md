@@ -3,6 +3,11 @@ Changelog
 
 More information, including binaries, can be found on GitHub in the [releases section](https://github.com/Kwpolska/DisplayMenu/releases).
 
+v1.5 (build 6)
+--------------
+
+Update for macOS Mojave.
+
 v1.4 (build 5)
 --------------
 

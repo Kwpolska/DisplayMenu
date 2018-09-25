@@ -49,7 +49,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         refreshItem.keyEquivalentModifierMask = NSEvent.ModifierFlags.control
         statusMenu.delegate = self
 
-        statusItem.image = #imageLiteral(resourceName: "DMStatusReady")
+        statusItem.button?.image = #imageLiteral(resourceName: "DMStatusReady")
         statusItem.menu = statusMenu
     }
 
@@ -82,16 +82,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     @objc func _resetDMIcon() {
-        self.statusItem.image = #imageLiteral(resourceName: "DMStatusReady")
+        self.statusItem.button?.image = #imageLiteral(resourceName: "DMStatusReady")
     }
 
     @objc func applyPresetFromMenu(_ sender: NSMenuItem?) {
-        self.statusItem.image = #imageLiteral(resourceName: "DMStatusWorking")
+        self.statusItem.button?.image = #imageLiteral(resourceName: "DMStatusWorking")
         do {
             try displayManager!.applyPreset(sender!.representedObject as! DisplayPreset)
-            self.statusItem.image = #imageLiteral(resourceName: "DMStatusSuccess")
+            self.statusItem.button?.image = #imageLiteral(resourceName: "DMStatusSuccess")
         } catch let error {
-            self.statusItem.image = #imageLiteral(resourceName: "DMStatusError")
+            self.statusItem.button?.image = #imageLiteral(resourceName: "DMStatusError")
             alert(NSLocalizedString("Failed to apply preset", comment: "alert when applyPreset fails"), String(reflecting: error), alertStyle: .critical)
         }
         Timer.scheduledTimer(timeInterval: TimeInterval(1.5), target: self, selector: #selector(_resetDMIcon), userInfo: nil, repeats: false)
