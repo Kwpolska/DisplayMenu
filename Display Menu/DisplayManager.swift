@@ -226,6 +226,7 @@ class DisplaySetup: CustomStringConvertible {
 
 /// A display preset — displayed in the menu, consists of a Dock preset, display setups, and extra settings.
 class DisplayPreset: CustomStringConvertible {
+    var name: String
     var dockPreset: DockPreset
     /// Key that will be part of the keyboard shortcut (with ⌘, case-sensitive)
     var keyEquivalent: String = ""
@@ -233,7 +234,8 @@ class DisplayPreset: CustomStringConvertible {
     var allDisplaysPresent: Bool = true
     var displays: [DisplayIdentifierString: DisplaySetup] = [:]
 
-    init(dockPreset: DockPreset, keyEquivalent: String, allDisplaysPresent: Bool, displays: [DisplayIdentifierString: DisplaySetup]) {
+    init(name: String, dockPreset: DockPreset, keyEquivalent: String, allDisplaysPresent: Bool, displays: [DisplayIdentifierString: DisplaySetup]) {
+        self.name = name
         self.dockPreset = dockPreset
         self.keyEquivalent = keyEquivalent
         self.allDisplaysPresent = allDisplaysPresent
@@ -241,7 +243,7 @@ class DisplayPreset: CustomStringConvertible {
     }
 
     var description: String {
-        return "Display Preset (\(dockPreset), \(keyEquivalent), \(allDisplaysPresent), \(displays))"
+        return "Display Preset \(name) (\(dockPreset), \(keyEquivalent), \(allDisplaysPresent), \(displays))"
     }
 }
 
@@ -381,11 +383,14 @@ class DisplayManager {
 
     var displays: [Display] = []
     var displaysByScreenID: [ScreenID: Display] = [:]
+    
+    var presetOrder: [DisplayPreset] = []
 
-    init(dockPresets: [String: DockPreset], displayProperties: [ScreenID: DisplayProperties], presets: [String: DisplayPreset]) {
+    init(dockPresets: [String: DockPreset], displayProperties: [ScreenID: DisplayProperties], presets: [String: DisplayPreset], presetOrder: [DisplayPreset]) {
         self.dockPresets = dockPresets
         self.displayProperties = displayProperties
         self.presets = presets
+        self.presetOrder = presetOrder
         findDisplays()
     }
 
@@ -420,14 +425,25 @@ class DisplayManager {
                 displaySetups[identifierString] = try DisplaySetup(setupString)
             }
             allp[name] = DisplayPreset(
+                name: name,
                 dockPreset: dockp[preset["dockPreset"] as! String]!,
                 keyEquivalent: preset["keyEquivalent"] as? String ?? "",
                 allDisplaysPresent: preset["allDisplaysPresent"] as? Bool ?? false,
                 displays: displaySetups
             )
         }
+        
+        var pio: [DisplayPreset] = []
+        if jsonDict["presetOrder"] != nil {
+            let jpio = jsonDict["presetOrder"] as! [String]
+            for i in jpio {
+                pio.append(allp[i]!)
+            }
+        } else {
+            pio.append(contentsOf: allp.values)
+        }
 
-        self.init(dockPresets: dockp, displayProperties: displayp, presets: allp)
+        self.init(dockPresets: dockp, displayProperties: displayp, presets: allp, presetOrder: pio)
     }
 
     convenience init(jsonPath: URL) throws {

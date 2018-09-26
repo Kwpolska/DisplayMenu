@@ -3,6 +3,12 @@ Changelog
 
 More information, including binaries, can be found on GitHub in the [releases section](https://github.com/Kwpolska/DisplayMenu/releases).
 
+v1.6 (build 7)
+--------------
+
+* Add a menu option to open config file
+* Add a `presetOrder` option to JSON file
+
 v1.5 (build 6)
 --------------
 

@@ -23,4 +23,7 @@
 "The application will now quit." = "Program zostanie teraz zamknięty.";
 
 /* Alert title (display manager/config error) */
-"Failed to initialize display manager." = "Failed to initialize display manager.";
+"Failed to initialize display manager." = "Nie udało się zainicjalizować menadżera ekranów.";
+
+/* Open Config File menu item */
+"Open Config File" = "Otwórz Plik Konfiguracyjny";

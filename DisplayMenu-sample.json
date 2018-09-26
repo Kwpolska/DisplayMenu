@@ -67,5 +67,6 @@
                 "External": "self 1920 1080 1x"
             }
         }
-    }
+    },
+    "presetOrder": ["Dual Screen", "MacBook Only", "MacBook Only (1440×900)", "External Only"]
 }

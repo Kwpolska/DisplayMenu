@@ -40,9 +40,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     let statusMenu = NSMenu()
     let refreshItem = NSMenuItem(title: NSLocalizedString("Reload", comment: "Reload menu item"), action: #selector(acquireDisplayManager), keyEquivalent: "r")
+    let openConfigItem = NSMenuItem(title: NSLocalizedString("Open Config File", comment: "Open Config File menu item"), action: #selector(openConfigFile), keyEquivalent: ",")
     let quitItem = NSMenuItem(title: NSLocalizedString("Quit", comment: "Quit menu item"), action: #selector(NSApp.terminate), keyEquivalent: "q")
     let dockPresetsItem = NSMenuItem(title: NSLocalizedString("Dock Presets", comment: "Dock Presets menu item"), action: nil, keyEquivalent: "")
-
+    var settingsURL: URL? = nil
     override init() {
         super.init()
 
@@ -66,13 +67,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let appsupport = try FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         let appdir = appsupport.appendingPathComponent(Bundle.main.bundleIdentifier!, isDirectory: true)
         try FileManager.default.createDirectory(at: appdir, withIntermediateDirectories: true, attributes: nil)
-        let url = appdir.appendingPathComponent("DisplayMenu.json")
-        if FileManager.default.fileExists(atPath: url.path) {
-            displayManager = try DisplayManager(jsonPath: url)
+        settingsURL = appdir.appendingPathComponent("DisplayMenu.json")
+        if FileManager.default.fileExists(atPath: settingsURL!.path) {
+            displayManager = try DisplayManager(jsonPath: settingsURL!)
         } else {
             alertAndQuit(
                 NSLocalizedString("Settings file not found", comment: "no settings alert title"),
-                String.localizedStringWithFormat(NSLocalizedString("Place a settings file at %@ and try again.", comment: "no settings alert description"), url.path)
+                String.localizedStringWithFormat(NSLocalizedString("Place a settings file at %@ and try again.", comment: "no settings alert description"), settingsURL!.path)
             )
         }
     }
@@ -101,13 +102,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         let dp = sender!.representedObject as! DockPreset
         dp.apply(force: true)
     }
+    
+    @objc func openConfigFile(_ sender: NSMenuItem?) {
+        NSWorkspace.shared.openFile(settingsURL!.path, withApplication: "TextEdit")
+    }
 }
 
 extension AppDelegate: NSMenuDelegate {
     func menuWillOpen(_ menu: NSMenu) {
         menu.removeAllItems()
-        for (name, preset) in displayManager!.presets {
-            let item = NSMenuItem(title: name, action: #selector(applyPresetFromMenu), keyEquivalent: preset.keyEquivalent)
+        for preset in displayManager!.presetOrder {
+            let item = NSMenuItem(title: preset.name, action: #selector(applyPresetFromMenu), keyEquivalent: preset.keyEquivalent)
             item.representedObject = preset
             menu.addItem(item)
         }
@@ -123,6 +128,7 @@ extension AppDelegate: NSMenuDelegate {
         menu.addItem(dockPresetsItem)
         dockPresetsItem.submenu = dpsubmenu
         menu.addItem(refreshItem)
+        menu.addItem(openConfigItem)
         menu.addItem(quitItem)
     }
 }
