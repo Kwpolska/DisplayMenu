@@ -1,6 +1,6 @@
 /*
  * Display Menu
- * Copyright © 2017-2018, Chris Warrick.
+ * Copyright © 2017-2019, Chris Warrick.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without

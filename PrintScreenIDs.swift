@@ -1,4 +1,4 @@
-// Part of Display Menu, Copyright © 2017-2018 Chris Warrick. License: 3-clause BSD.
+// Part of Display Menu, Copyright © 2017-2019 Chris Warrick. License: 3-clause BSD.
 
 import Quartz
 

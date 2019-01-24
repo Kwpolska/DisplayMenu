@@ -3,6 +3,11 @@ Changelog
 
 More information, including binaries, can be found on GitHub in the [releases section](https://github.com/Kwpolska/DisplayMenu/releases).
 
+v1.7 (build 8)
+--------------
+
+* Improve icon appearance on Retina displays
+
 v1.6 (build 7)
 --------------
 
