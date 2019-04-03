@@ -149,8 +149,10 @@ class Resolution: Hashable, Equatable, CustomStringConvertible {
         return "\(width) \(height) \(scale)x"
     }
 
-    public var hashValue: Int {
-        return scale * 100000000 + height * 10000 + width
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(scale)
+        hasher.combine(height)
+        hasher.combine(width)
     }
 
     static func ==(lhs: Resolution, rhs: Resolution) -> Bool {
